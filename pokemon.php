@@ -31,6 +31,7 @@
 <div class="div">
         <?php
 
+        // Esta funcion me sirve para poner el color de manera dinamica a los elementos
         function selectColor($pokemonId) {
             $ternaria = ($pokemonId % 2 == 0) ? 'lightblue' : 'lightpink';
             return $ternaria;
@@ -48,7 +49,8 @@
             $color = selectColor($index);
             echo "<p class=pokemon style=background-color:$color>" . 
             ($index + 1) . ' - ' . $elem['name'] . ' - ' . 
-            '<b onclick="detalle(' . $index . ');" class=detalles>Detalles</b>'. "<b class=pokemonDetail id=pokemonDetail$index></b>" . '</p>';
+            '<b onclick="detalle(' . $index . ');" class=detalles>Detalles</b>' . 
+            "<b class=pokemonDetail id=pokemonDetail$index></b>" . '</p>';
         }
 
         // Esta es mi primer solución y la que según lo que se funciona
@@ -76,10 +78,12 @@
             const pokemonDetail = document.getElementById(`pokemonDetail${index}`);
             const detailURL = `https://pokeapi.co/api/v2/pokemon/${index + 1}/`
 
+            // Con esta ternaria muetro u oculto los detalles que hago click
             pokemonDetail.style.display === "block" ? 
             pokemonDetail.style.display = "none" :
             pokemonDetail.style.display = "block"
 
+            // Con esta funcion retorno los detalles y se los paso al elemento con el id correspondiente
             const res = fetch(detailURL)
             .then((data)=> data.json()
             .then(result => {
