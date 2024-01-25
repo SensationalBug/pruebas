@@ -1,10 +1,12 @@
 <?php
+$main_system = array('formato' => '1'); // Puse esta variable aqui para darle un varor porque vi que pasando vacio a la funcion explotaba,
+                                        // cuando investigue el error me sale que esa variable debe tener un valor antes de llamarla dentro de la funcion
 function convertir($input, $formato = "") {
     // global($main_system); // 1- Los parentesis no deberian estar ahi
     global $main_system; // Asi es que debe ir
     $res = $input;
     if ($input !== "") {
-        if ($formato === "" && isset($main_system['formato']))
+        if ($formato === "" )
             $formato = $main_system['formato'];
         if ($formato !== "") {
             $form = explode("|", $formato);
@@ -15,7 +17,7 @@ function convertir($input, $formato = "") {
                     case 1:
                         $form[1] = ".";
                     case 2:
-                        $form[2] = "";
+                        $form[2] = ",";
                     // case 3:  // 3- El case 3 no tiene un valor
                         // BLOQUE 1 
                     // $c=new Array("0","0"); // 4- No es necesario el new
@@ -67,4 +69,6 @@ function convertir($input, $formato = "") {
     // } // 6- Este cierre esta de mas
     exit($res);
 }
+
+convertir ("22222");
 ?>
