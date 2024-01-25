@@ -11,7 +11,6 @@
         $input = ""; 
         $res = $input;
         $form = array('1','.',','); // Valores dados por el ejercicio
-        //BLOQUE 1
         $c=array("-3000","20"); // Valores dados por el ejercicio
 
         //BLOQUE 2
